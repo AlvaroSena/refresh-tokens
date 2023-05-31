@@ -5,15 +5,24 @@ export class UserRepository {
 
   private static INSTANCE: UserRepository
 
-  constructor() {
+  private constructor() {
     this.users = []
+  }
+
+  public static getInstance(): UserRepository{
+    if(!UserRepository.INSTANCE) {
+        UserRepository.INSTANCE = new UserRepository()
+    }
+    return UserRepository.INSTANCE
   }
 
   create({ name, email }: any) {
     const user = new User()
 
-    user.name = name
-    user.email = email
+    Object.assign(user, {
+      name,
+      email, 
+    })
 
     this.users.push(user)
     return user
@@ -21,5 +30,15 @@ export class UserRepository {
 
   getAll(): User[] {
     return this.users
+  }
+
+  findByEmail({ email }: any) {
+    const user = this.users.find(item => item.email === email)
+    return user
+  }
+
+  findById({ id }: any) {
+    const user = this.users.find(item => item.id === id)
+    return user
   }
 }

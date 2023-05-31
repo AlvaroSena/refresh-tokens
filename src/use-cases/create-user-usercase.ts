@@ -1,6 +1,6 @@
 import { UserRepository } from '../repositories/user-repository'
 
-type CreateUserRequest = {
+type CreateUserPayload = {
   name: string
   email: string
 }
@@ -10,7 +10,7 @@ export class CreateUserUseCase {
     private userRepository: UserRepository
   ) {}
 
-  run({ name, email }: CreateUserRequest) {
+  run({ name, email }: CreateUserPayload) {
     const user = this.userRepository.create({ name, email })
     return user
   }

@@ -1,14 +1,16 @@
 import { Request, Response } from 'express'
 import { UserRepository } from '../repositories/user-repository'
-import { GetAllUsersUseCase } from '../use-cases/get-all-users-usecase'
+import { GetOneUserUseCase } from '../use-cases/get-one-user-usecase'
 
-export class GetAllUsersController {
+export class GetOneUserController {
   run(req: Request, res: Response) {
     try {
-      const userRepository = UserRepository.getInstance()
-      const getAllUsersUseCase = new GetAllUsersUseCase(userRepository)
+      const { email } = req.body
 
-      const users = getAllUsersUseCase.run()
+      const userRepository = UserRepository.getInstance()
+      const getOneUserUseCase = new GetOneUserUseCase(userRepository)
+
+      const users = getOneUserUseCase.run({ email })
 
       return res.json(users)
     } catch (err) {

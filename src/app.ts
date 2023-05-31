@@ -1,9 +1,11 @@
 import express from 'express'
 import { routes } from './routes'
+import { config } from 'dotenv'
 
 const app = express()
 app.use(express.json())
 app.use(routes)
+config()
 
 app.get('/', (req, res) => {
   return res.json({ message: 'hello, world' })

@@ -7,7 +7,7 @@ export class CreateUserController {
     try {
       const { name, email } = req.body
 
-      const userRepository = new UserRepository()
+      const userRepository = UserRepository.getInstance()
       const createUserUseCase = new CreateUserUseCase(userRepository)
 
       const user = createUserUseCase.run({ name, email })
