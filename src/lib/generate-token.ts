@@ -6,8 +6,8 @@ type Props = {
 
 export const configProps = {
   jwt: {
-    secret: '03b62516184fb6ef591f45bd4974b753',
-    expiresIn: '1d' 
+    secret: process.env.JWT_SECRET,
+    expiresIn: process.env.JWT_EXPIRES_IN,
   }
 }
 

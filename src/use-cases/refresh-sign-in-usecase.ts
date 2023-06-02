@@ -3,16 +3,16 @@ import { GenerateAccessToken } from '../lib/generate-token'
 import { RefreshTokenRepository } from '../repositories/refresh-token-repository'
 
 type Props = {
-  id: string
+  _refreshToken: string
 }
 
 export class RefreshSignInUseCase {
-  private constructor(
+  constructor(
     private refreshTokenRepository: RefreshTokenRepository
   ) {}
 
   run(props: Props) {
-    const refreshTokenExists = this.refreshTokenRepository.findById({ id: props.id })
+    const refreshTokenExists = this.refreshTokenRepository.findById({ id: props._refreshToken })
 
     if (!refreshTokenExists) {
       throw new Error("Refresh token is invalid!")

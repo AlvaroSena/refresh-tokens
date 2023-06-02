@@ -3,7 +3,7 @@ import { UserRepository } from '../repositories/user-repository'
 import { CreateUserUseCase } from '../use-cases/create-user-usercase'
 
 export class CreateUserController {
-  run(req: Request, res: Response) {
+  handle(req: Request, res: Response) {
     try {
       const { name, email } = req.body
 

@@ -3,7 +3,7 @@ import { UserRepository } from '../repositories/user-repository'
 import { GetAllUsersUseCase } from '../use-cases/get-all-users-usecase'
 
 export class GetAllUsersController {
-  run(req: Request, res: Response) {
+  handle(req: Request, res: Response) {
     try {
       const userRepository = UserRepository.getInstance()
       const getAllUsersUseCase = new GetAllUsersUseCase(userRepository)

@@ -3,7 +3,7 @@ import { UserRepository } from '../repositories/user-repository'
 import { GetOneUserUseCase } from '../use-cases/get-one-user-usecase'
 
 export class GetOneUserController {
-  run(req: Request, res: Response) {
+  handle(req: Request, res: Response) {
     try {
       const { email } = req.body
 
